@@ -58,7 +58,7 @@ type Layout struct {
 	Name          string
 	Authors       []string
 	PrimaryBoards []string
-	Keys          []Key `json:"keys"`
+	Keys          []Key
 }
 
 // Used for formats that store layouts as a 2d matrix
