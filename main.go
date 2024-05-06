@@ -57,7 +57,9 @@ type Key struct {
 type Layout struct {
 	Name          string
 	Authors       []string
-	PrimaryBoards []string
+	Link          string
+	CreationTime  uint64   `json:"creation_time"`
+	PrimaryBoards []string `json:"primary_boards"`
 	Keys          []Key
 }
 
