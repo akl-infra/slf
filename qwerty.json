@@ -1,0 +1,212 @@
+{
+  "name": "QWERTY",
+  "authors": ["Christopher Latham Sholes"],
+  "primary_boards": ["ansi", "iso"],
+  "keys": [
+    {
+      "char": "q",
+      "row": 0,
+      "col": 0,
+      "finger": 0
+    },
+    {
+      "char": "w",
+      "row": 0,
+      "col": 1,
+      "finger": 1
+    },
+    {
+      "char": "e",
+      "row": 0,
+      "col": 2,
+      "finger": 2
+    },
+    {
+      "char": "r",
+      "row": 0,
+      "col": 3,
+      "finger": 3
+    },
+    {
+      "char": "t",
+      "row": 0,
+      "col": 4,
+      "finger": 3
+    },
+    {
+      "char": "y",
+      "row": 0,
+      "col": 5,
+      "finger": 6
+    },
+    {
+      "char": "u",
+      "row": 0,
+      "col": 6,
+      "finger": 6
+    },
+    {
+      "char": "i",
+      "row": 0,
+      "col": 7,
+      "finger": 7
+    },
+    {
+      "char": "o",
+      "row": 0,
+      "col": 8,
+      "finger": 8
+    },
+    {
+      "char": "p",
+      "row": 0,
+      "col": 9,
+      "finger": 9
+    },
+    {
+      "char": "[",
+      "row": 0,
+      "col": 10,
+      "finger": 9
+    },
+    {
+      "char": "]",
+      "row": 0,
+      "col": 11,
+      "finger": 9
+    },
+    {
+      "char": "\\",
+      "row": 0,
+      "col": 12,
+      "finger": 9
+    },
+    {
+      "char": "a",
+      "row": 1,
+      "col": 0,
+      "finger": 0
+    },
+    {
+      "char": "s",
+      "row": 1,
+      "col": 1,
+      "finger": 1
+    },
+    {
+      "char": "d",
+      "row": 1,
+      "col": 2,
+      "finger": 2
+    },
+    {
+      "char": "f",
+      "row": 1,
+      "col": 3,
+      "finger": 3
+    },
+    {
+      "char": "g",
+      "row": 1,
+      "col": 4,
+      "finger": 3
+    },
+    {
+      "char": "h",
+      "row": 1,
+      "col": 5,
+      "finger": 6
+    },
+    {
+      "char": "j",
+      "row": 1,
+      "col": 6,
+      "finger": 6
+    },
+    {
+      "char": "k",
+      "row": 1,
+      "col": 7,
+      "finger": 7
+    },
+    {
+      "char": "l",
+      "row": 1,
+      "col": 8,
+      "finger": 8
+    },
+    {
+      "char": ";",
+      "row": 1,
+      "col": 9,
+      "finger": 9
+    },
+    {
+      "char": "'",
+      "row": 1,
+      "col": 10,
+      "finger": 9
+    },
+    {
+      "char": "z",
+      "row": 2,
+      "col": 0,
+      "finger": 0
+    },
+    {
+      "char": "x",
+      "row": 2,
+      "col": 1,
+      "finger": 1
+    },
+    {
+      "char": "c",
+      "row": 2,
+      "col": 2,
+      "finger": 2
+    },
+    {
+      "char": "v",
+      "row": 2,
+      "col": 3,
+      "finger": 3
+    },
+    {
+      "char": "b",
+      "row": 2,
+      "col": 4,
+      "finger": 3
+    },
+    {
+      "char": "n",
+      "row": 2,
+      "col": 5,
+      "finger": 6
+    },
+    {
+      "char": "m",
+      "row": 2,
+      "col": 6,
+      "finger": 6
+    },
+    {
+      "char": ",",
+      "row": 2,
+      "col": 7,
+      "finger": 7
+    },
+    {
+      "char": ".",
+      "row": 2,
+      "col": 8,
+      "finger": 8
+    },
+    {
+      "char": "/",
+      "row": 2,
+      "col": 9,
+      "finger": 9
+    }
+
+  ]
+}
