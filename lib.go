@@ -158,7 +158,7 @@ func (l *Layout) ToOxeylyzer() (string, error) {
 func (l *Layout) ToKeymeow() ([]byte, error) {
 	var keymeow KeymeowLayout
 	keymeow.Name = l.Name
-	keymeow.Authors = l.Authors
+	keymeow.Authors = []string{l.Author}
 	keymeow.Components = make([]KeymeowComponent, 10)
 	for i := range keymeow.Components {
 		finger := []Finger{Finger(i)}
