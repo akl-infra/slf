@@ -1,4 +1,4 @@
-package main
+package slf
 
 import (
 	"encoding/json"
@@ -88,7 +88,7 @@ func (e *ConversionError) Error() string {
 	return e.Err.Error()
 }
 
-func (l *Layout) matrix() [][]MatrixKey {
+func (l *Layout) Matrix() [][]MatrixKey {
 	rows := make([][]MatrixKey, 0)
 	for _, key := range l.Keys {
 		for len(rows) <= int(key.Row) {
@@ -105,7 +105,7 @@ func (l *Layout) matrix() [][]MatrixKey {
 }
 
 func (l *Layout) ToGenkey() (string, error) {
-	matrix := l.matrix()
+	matrix := l.Matrix()
 	var b strings.Builder
 	if len(matrix) != 3 {
 		return "", &ConversionError{errors.New("genkey only supports layouts with 3 rows")}
@@ -134,7 +134,7 @@ func (l *Layout) ToGenkey() (string, error) {
 }
 
 func (l *Layout) ToOxeylyzer() (string, error) {
-	matrix := l.matrix()
+	matrix := l.Matrix()
 	var b strings.Builder
 	if len(matrix) != 3 {
 		return "", &ConversionError{errors.New("oxeylyzer only supports 3x10 layouts")}
