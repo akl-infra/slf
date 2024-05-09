@@ -1,9 +1,11 @@
 {
   "name": "QWERTY",
-  "authors": ["Christopher Latham Sholes"],
+  "owner": 0,
+  "author": "Christopher Latham Sholes",
   "link": null,
-  "creation_time": 252489600,
-  "primary_boards": ["ansi", "iso"],
+  "created": "1864-07-14T00:00:00Z",
+  "modified": "1864-07-14T00:00:00Z",
+  "boards": ["ansi", "iso"],
   "keys": [
     {
       "char": "q",

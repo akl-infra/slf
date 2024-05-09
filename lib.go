@@ -7,6 +7,7 @@ import (
 	"os"
 	"strconv"
 	"strings"
+	"time"
 )
 
 type Finger uint8
@@ -48,19 +49,21 @@ func (f Finger) MarshalJSON() ([]byte, error) {
 }
 
 type Key struct {
-	Char   string
-	Row    uint8
-	Col    uint8
-	Finger Finger
+	Char   string `json:"char"`
+	Row    uint8  `json:"row"`
+	Col    uint8  `json:"col"`
+	Finger Finger `json:"finger"`
 }
 
 type Layout struct {
-	Name          string
-	Authors       []string
-	Link          string
-	CreationTime  uint64   `json:"creation_time"`
-	PrimaryBoards []string `json:"primary_boards"`
-	Keys          []Key
+	Name     string    `json:"name"`
+	Owner    int64     `json:"author"`
+	Author   string    `json:"author"`
+	Link     string    `json:"link"`
+	Created  time.Time `json:"created"`
+	Modified time.Time `json:"modified"`
+	Boards   []string  `json:"boards"`
+	Keys     []Key     `json:"keys"`
 }
 
 // Used for formats that store layouts as a 2d matrix
