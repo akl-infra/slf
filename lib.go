@@ -113,6 +113,8 @@ func (l *Layout) ToGenkey() (string, error) {
 	if len(matrix) != 3 {
 		return "", &ConversionError{errors.New("genkey only supports layouts with 3 rows")}
 	}
+	b.WriteString(l.Name)
+	b.WriteRune('\n')
 	for _, fingermap := range []bool{false, true} {
 		for _, row := range matrix {
 			for _, key := range row {
