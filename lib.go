@@ -172,18 +172,23 @@ func (l *Layout) ToKeymeow() ([]byte, error) {
 	return b, err
 }
 
-func getLayout(filename string) (Layout, error) {
-	var l Layout
+func ReadLayoutFile(filename string) (Layout, error) {
 	b, err := os.ReadFile(filename)
 	if err != nil {
-		return l, err
+		return Layout{}, err
 	}
-	err = json.Unmarshal(b, &l)
+	l, err := ParseLayout(b)
+	return l, err
+}
+
+func ParseLayout(b []byte) (Layout, error) {
+	var l Layout
+	err := json.Unmarshal(b, &l)
 	return l, err
 }
 
 func main() {
-	l, err := getLayout("qwerty.json")
+	l, err := ReadLayoutFile("qwerty.json")
 	if err != nil {
 		panic(err)
 	}
