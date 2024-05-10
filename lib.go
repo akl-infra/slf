@@ -157,7 +157,7 @@ func (l *Layout) ToOxeylyzer() (string, error) {
 	return b.String(), nil
 }
 
-func (l *Layout) ToKeymeow() ([]byte, error) {
+func (l *Layout) ToKeymeow() KeymeowLayout {
 	var keymeow KeymeowLayout
 	keymeow.Name = l.Name
 	keymeow.Authors = []string{l.Author}
@@ -170,8 +170,7 @@ func (l *Layout) ToKeymeow() ([]byte, error) {
 		keys := &keymeow.Components[key.Finger].Keys
 		*keys = append(*keys, key.Char)
 	}
-	b, err := json.Marshal(keymeow)
-	return b, err
+	return keymeow
 }
 
 func ReadLayoutFile(filename string) (Layout, error) {
