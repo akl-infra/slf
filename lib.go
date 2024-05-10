@@ -223,25 +223,3 @@ func ParseLayout(b []byte) (Layout, error) {
 	err := json.Unmarshal(b, &l)
 	return l, err
 }
-
-func main() {
-	l, err := ReadLayoutFile("qwerty.json")
-	if err != nil {
-		panic(err)
-	}
-	fmt.Println("Original format")
-	fmt.Println(l)
-	genkey, err := l.ToGenkey()
-	if err != nil {
-		panic(err)
-	}
-	fmt.Println()
-	fmt.Println("Genkey")
-	fmt.Println(genkey)
-	keymeow, err := l.ToKeymeow()
-	if err != nil {
-		panic(err)
-	}
-	fmt.Println("Keymeow")
-	fmt.Println(string(keymeow))
-}
