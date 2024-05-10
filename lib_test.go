@@ -56,9 +56,9 @@ func TestKeymeowConversion(t *testing.T) {
 	for i, out_comp := range out.Components {
 		expected_comp := expected.Components[i]
 		fingers_match := out_comp.Finger[0] == expected_comp.Finger[0]
-		keys_match := strings.Join(out_comp.Keys, "") == strings.Join(expected_comp.Keys, "")
+		keys_match := strings.Join(out_comp.Keys, ",") == strings.Join(expected_comp.Keys, ",")
 		if !fingers_match || !keys_match {
-			t.Fatalf("component %d did not match expected value\n  expected:  `%v`\n  got: `%v`", i, expected_comp, out_comp)
+			t.Fatalf("component %d did not match expected value\n  expected: `%v`\n  got: `%v`", i, expected_comp, out_comp)
 		}
 	}
 }

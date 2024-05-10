@@ -5,6 +5,7 @@ import (
 	"errors"
 	"fmt"
 	"os"
+	"slices"
 	"strconv"
 	"strings"
 	"time"
@@ -193,7 +194,7 @@ func (l *Layout) ToOxeylyzer() (string, error) {
 	return b.String(), nil
 }
 
-func (l *Layout) ToKeymeow() KeymeowLayout {
+func (l Layout) ToKeymeow() KeymeowLayout {
 	var keymeow KeymeowLayout
 	keymeow.Name = l.Name
 	keymeow.Authors = []string{l.Author}
@@ -202,6 +203,18 @@ func (l *Layout) ToKeymeow() KeymeowLayout {
 		finger := []Finger{Finger(i)}
 		keymeow.Components[i] = KeymeowComponent{finger, make([]string, 0, 12)}
 	}
+	slices.SortFunc(l.Keys, func(a, b Key) int {
+		if a.Col < b.Col {
+			return -1
+		} else if b.Col < a.Col {
+			return 1
+		} else {
+			if a.Row < b.Row {
+				return -1
+			}
+			return 1
+		}
+	})
 	for _, key := range l.Keys {
 		keys := &keymeow.Components[key.Finger].Keys
 		*keys = append(*keys, key.Char)
