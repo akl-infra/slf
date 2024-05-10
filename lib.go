@@ -26,26 +26,62 @@ const (
 )
 
 var (
-	FingerName = map[uint8]string{
-		0: "LP",
-		1: "LR",
-		2: "LM",
-		3: "LI",
-		4: "LT",
-		5: "RT",
-		6: "RI",
-		7: "RM",
-		8: "RR",
-		9: "RP",
+	FingerName = []string{
+		"LP",
+		"LR",
+		"LM",
+		"LI",
+		"LT",
+		"RT",
+		"RI",
+		"RM",
+		"RR",
+		"RP",
+	}
+	FingerValue = map[string]Finger{
+		"LP": LP,
+		"LR": LR,
+		"LM": LM,
+		"LI": LI,
+		"LT": LT,
+		"RT": RT,
+		"RI": RI,
+		"RM": RM,
+		"RR": RR,
+		"RP": RP,
 	}
 )
 
 func (f Finger) String() string {
-	return FingerName[uint8(f)]
+	return FingerName[f]
+}
+
+func ParseFinger(s string) (Finger, error) {
+	val, ok := FingerValue[s]
+	if !ok {
+		return Finger(0), fmt.Errorf("%s is not a valid finger", s)
+	}
+	return val, nil
 }
 
 func (f Finger) MarshalJSON() ([]byte, error) {
 	return json.Marshal(f.String())
+}
+
+func (f *Finger) UnmarshalJSON(data []byte) (err error) {
+	var num int
+	if err := json.Unmarshal(data, &num); err == nil {
+		*f = Finger(num)
+		return nil
+	}
+	var finger string
+	if err := json.Unmarshal(data, &finger); err != nil {
+		return err
+	}
+	if *f, err = ParseFinger(finger); err != nil {
+		return err
+	}
+	return nil
 }
 
 type Key struct {
