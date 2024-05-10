@@ -93,7 +93,7 @@ type Key struct {
 
 type Layout struct {
 	Name     string    `json:"name"`
-	Owner    int64     `json:"author"`
+	Owner    int64     `json:"owner"`
 	Author   string    `json:"author"`
 	Link     string    `json:"link"`
 	Created  time.Time `json:"created"`
