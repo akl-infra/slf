@@ -12,6 +12,7 @@ import (
 )
 
 type Finger uint8
+type KeymeowFinger Finger
 
 const (
 	LP Finger = iota
@@ -65,8 +66,8 @@ func ParseFinger(s string) (Finger, error) {
 	return val, nil
 }
 
-func (f Finger) MarshalJSON() ([]byte, error) {
-	return json.Marshal(f.String())
+func (f KeymeowFinger) MarshalJSON() ([]byte, error) {
+	return json.Marshal(Finger(f).String())
 }
 
 func (f *Finger) UnmarshalJSON(data []byte) (err error) {
@@ -82,6 +83,19 @@ func (f *Finger) UnmarshalJSON(data []byte) (err error) {
 	if *f, err = ParseFinger(finger); err != nil {
 		return err
 	}
+	return nil
+}
+
+func (f *KeymeowFinger) UnmarshalJSON(data []byte) (err error) {
+	var finger string
+	if err := json.Unmarshal(data, &finger); err != nil {
+		return err
+	}
+	var of Finger
+	if of, err = ParseFinger(finger); err != nil {
+		return err
+	}
+	*f = KeymeowFinger(of)
 	return nil
 }
 
@@ -110,7 +124,7 @@ type MatrixKey struct {
 }
 
 type KeymeowComponent struct {
-	Finger []Finger
+	Finger []KeymeowFinger
 	Keys   []string
 }
 
@@ -200,7 +214,7 @@ func (l Layout) ToKeymeow() KeymeowLayout {
 	keymeow.Authors = []string{l.Author}
 	keymeow.Components = make([]KeymeowComponent, 10)
 	for i := range keymeow.Components {
-		finger := []Finger{Finger(i)}
+		finger := []KeymeowFinger{KeymeowFinger(i)}
 		keymeow.Components[i] = KeymeowComponent{finger, make([]string, 0, 12)}
 	}
 	slices.SortFunc(l.Keys, func(a, b Key) int {
