@@ -17,6 +17,14 @@ func TestParseLayout(t *testing.T) {
 	}
 }
 
+func TestMarshalLayout(t *testing.T) {
+	l, _ := ReadLayoutFile("test_data/qwerty.json")
+	_, err := json.Marshal(l)
+	if err != nil {
+		t.Fatalf("Error serializing layout: %v", err)
+	}
+}
+
 func TestGenkeyConversion(t *testing.T) {
 	l, _ := ReadLayoutFile("test_data/qwerty.json")
 	converted, err := l.ToGenkey()
